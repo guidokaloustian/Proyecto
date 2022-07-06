@@ -16,6 +16,10 @@
     height: 100px;
 }
 
+#logoHeader a {
+    text-decoration: none;
+}
+
 .btnLogin {
     text-decoration: none;
     color: white;
@@ -29,13 +33,17 @@
     bottom: 50px;
 }
 
+header ul li {
+    list-style-type: none;
+}
+
 #login {
     padding: 50px 250px 50px 250px;
 }
 
 header {
     background-color: black;
-    height: 200px;
+    height: 250px;
     width: 100%;
 }
 
@@ -54,35 +62,10 @@ header {
 
 }
 
-.menuNav li ul li a:hover {
-    font-size: 18px;
-}
-
-.containerSlider {
-    width: 95%;
-    margin: auto;
-}
-
-.containerSlider ul {
-    display: flex;
-    overflow: hidden;
-}
-
-.containerSlider li {
-    list-style: none;
-}
-
-.slider img {
-    width: 600px;
-    height: 600px;
-    display: block;
-}
-
 nav ul li {
     margin: 25px;
     list-style-type: none;
     font-weight: bold;
-    display: inline-block;
 }
 
 ul ul {
@@ -107,6 +90,18 @@ nav ul li a {
 
 body {
     background-color: white;
+}
+
+.carousel {
+    border: solid 1px;
+    width: 450px;
+    height: 500px;
+}
+
+.carousel-inner img {
+    width: 450px;
+    height: 500px;
+    text-align: center;
 }
 
 .título {
@@ -198,6 +193,11 @@ body {
     width: 100%;
 }
 
+#pie div h3 {
+    font-weight: bold;
+    font-size: 12px;
+}
+
 .footerGrid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -211,8 +211,8 @@ body {
 
 .copyright {
     background-color: black;
+    margin-top: 30px;
     font-size: 12px;
-    padding: 5px 0px 10px 0px;
     color: white;
     text-align: center;
 }
