@@ -13,36 +13,55 @@
 
 <body>
     <header>
-        <div>
-            <a href=../index.html> <img id="logoHeader" src="../logo.jpg" alt="logo"> </a>
-            <ul>
-                <li><a class="btnLogin" href="pages/login.html">Ingresar</a></li>
-            </ul>
-        </div>
-        <nav>
-            <ul class="menuNav">
-                <li><a href="productos.html">PRODUCTOS</a>
-                    <ul>
-                        <li><a href="../pages/productos.html#parrillas">Parrillas</a></li>
-                        <li><a href="../pages/productos.html#hornos">Hornos</a></li>
-                        <li><a href="../pages/productos.html#fogoneros">Fogoneros</a></li>
-                        <li><a href="../pages/productos.html#calefaccion">Calefacción</a></li>
-                        <li><a href="../pages/productos.html#accesorios">Accesorios</a></li>
+        <div class="menuLogo">
+            <div>
+            <a href=../index.html> <img id="logoHeader" src="../logo.jpg" alt="logo"></a>
+            </div>
+            <div>
+                <li><a id="btnLog" class="btn btn-outline-danger" href="login.html">Ingresar</a></li>
+            </div>
+        </div>   
+        <nav class="navbar-dark navbar-expand-lg">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      PRODUCTOS
+                    </a>
+                    <ul class="dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="productos.html#parrillas">Parrillas</a></li>
+                      <li><a class="dropdown-item" href="productos.html#hornos">Hornos</a></li>
+                      <li><a class="dropdown-item" href="productos.html#fogoneros">Fogoneros</a></li>
+                      <li><a class="dropdown-item" href="productos.html#calefaccion">Calefacción</a></li>
+                      <li><a class="dropdown-item" href="productos.html#accesorios">Accesorios</a></li>
                     </ul>
-                </li>
-                <li><a href="ubicacion.html">UBICACIÓN</a></li>
-                <li><a href="quienes-somos.html">QUÉNES SOMOS</a></li>
-                <li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
-            <input type="checkbox" id="menuHamb">
-            <label for="menuHamb" class="menuHamburguesa">
-                <i class="fas fa-bars"></i>
-            </label>
-        </nav>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="ubicacion.html">UBICACIÓN</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="quienes-somos.html">ACERCA DE NOSOTROS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">CONTACTO</a>
+                  </li>
+                </ul>
+                <form id="search" class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
     </header>
-    <h1 class="título" id="parrillas">PARRILLAS</h1>
-    <div class="linea"></div>
+
     <section>
+        <h1 class="título" id="parrillas">PARRILLAS</h1>
+        <div class="linea"></div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-xl-4">
@@ -98,55 +117,266 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <h2 class="título" id="hornos">HORNOS</h2>
+        <div class="linea"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/HORNOS/141992137_113258050621860_2927703647232471560_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/HORNOS/97909009_3320645517946037_1358515264965856215_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ASADORES/142600211_113660744009407_5556108573160894008_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="título" id="fogoneros">FOGONEROS</h2>
+        <div class="linea"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/140763227_113902270550874_5912814058286206832_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/116731290_574564553163816_1376129198083723929_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/116907542_165080661792169_2590160925467974432_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/119174496_330722218259376_7841848234423859971_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/119370203_158004945962565_5041745894770272061_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/FOGONEROS/139931886_167524351796613_2994888001206301935_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="título" id="calefaccion">CALEFACCIÓN</h2>
+        <div class="linea"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/CALEFACCIÓN/97279239_638829013375024_3057918860343200477_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/CALEFACCIÓN/97317306_634790557073683_889240123842664369_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/CALEFACCIÓN/97359153_238031987296316_384965395224210694_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/CALEFACCIÓN/98132827_2905244676236029_523896004174099494_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/CALEFACCIÓN/98256178_247493976475047_1879116458340984041_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 id="accesorios" class="título">ACCESORIOS</h2>
+        <div class="linea"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/104216653_101053421634447_6708615663298082633_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/142627510_885929961948178_457163731430816692_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/82772333_2649121735365933_920639196554220246_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/97199651_673485583222449_6797346846089783825_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/97244198_283553573037001_911733662895511298_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/97376342_241852600244503_5645329381360841669_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/97522129_2720100364943526_4404785555803235711_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../images/ACCESORIOS/97943775_242912500314915_3510943994901043155_n.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section>
 
-
-            <div class="productos">
-                <div class="itemProducto"><img src="../images/HORNOS/141992137_113258050621860_2927703647232471560_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/HORNOS/97281413_572159013504728_8682794338570512983_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/HORNOS/97909009_3320645517946037_1358515264965856215_n.jpg" alt=""></div>
-            </div>
-            <h2 class="título" id="fogoneros">FOGONEROS</h2>
-            <div class="linea"></div>
-            <div class="productos">
-                <div class="itemProducto"><img src="../images/FOGONEROS/101396419_558570774801458_8677509661121772291_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/116731290_574564553163816_1376129198083723929_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/116907542_165080661792169_2590160925467974432_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/119174496_330722218259376_7841848234423859971_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/119370203_158004945962565_5041745894770272061_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/139931886_167524351796613_2994888001206301935_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/FOGONEROS/140763227_113902270550874_5912814058286206832_n.jpg" alt=""></div>
-            </div>
-            <h2 class="título" id="calefaccion">CALEFACCIÓN</h2>
-            <div class="linea"></div>
-            <div class="productos">
-                <div class="itemProducto"><img src="../images/CALEFACCIÓN/97279239_638829013375024_3057918860343200477_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/CALEFACCIÓN/97317306_634790557073683_889240123842664369_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/CALEFACCIÓN/97359153_238031987296316_384965395224210694_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/CALEFACCIÓN/98132827_2905244676236029_523896004174099494_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/CALEFACCIÓN/98256178_247493976475047_1879116458340984041_n.jpg" alt=""></div>
-            </div>
-            <h2 id="accesorios" class="título">ACCESORIOS</h2>
-            <div class="linea"></div>
-            <div class="productos">
-                <div class="itemProducto"><img src="../images/ACCESORIOS/104216653_101053421634447_6708615663298082633_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/142627510_885929961948178_457163731430816692_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/82772333_2649121735365933_920639196554220246_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/97199651_673485583222449_6797346846089783825_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/97244198_283553573037001_911733662895511298_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/97376342_241852600244503_5645329381360841669_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/97522129_2720100364943526_4404785555803235711_n.jpg" alt=""></div>
-                <div class="itemProducto"><img src="../images/ACCESORIOS/97943775_242912500314915_3510943994901043155_n.jpg" alt=""></div>
-            </div>
-        </div>
-    </section>
-    <aside>
-
-    </aside>
     <footer id="pie">
         <div class="footerGrid">
             <div class="footerDirección">
@@ -170,8 +400,7 @@
                 <a href="https://www.instagram.com/hierroandhome"> <img src="../iconos/instagram.png"> </a>
             </div>
         </div>
-        <p class="copyright">Copyright © 2022 Hierro & Home</p>
-        <p class="copyright">Diseñado por GK</p>
+        <p class="copyright">Copyright © 2022 Hierro & Home <br>Diseñado por GK</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>

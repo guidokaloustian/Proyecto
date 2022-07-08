@@ -20,17 +20,17 @@
     text-decoration: none;
 }
 
-.btnLogin {
-    text-decoration: none;
-    color: white;
-    background-color: red;
-    box-shadow: 2px 2px rgba(255, 0, 0, 0.3);
-    padding: 3px 3px 3px 3px;
-    border-radius: 5px;
-    float: right;
-    margin-right: 50px;
-    position: relative;
-    bottom: 50px;
+.menuLogo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuLogo li {
+    list-style-type: none;
+}
+
+#btnLog {
+    transform: translate(-30px, 30px);
 }
 
 header ul li {
@@ -38,7 +38,8 @@ header ul li {
 }
 
 #login {
-    padding: 50px 250px 50px 250px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 header {
@@ -47,19 +48,33 @@ header {
     width: 100%;
 }
 
-.menuNav {
-    display: flex;
-    flex-flow: row wrap;
+.navbar-dark {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
     justify-content: space-evenly;
 }
 
-.menuNav li a{
-    transition: all 0.5s;
+.container-fluid {
+    transform: translateY(40px);
 }
 
-.menuNav li a:hover {
-    color: rgb(179, 179, 179);
+#navbarTogglerDemo01 {
+    background-color: black;
+}
 
+#navbarTogglerDemo01 li a {
+    transition: all 0.5s;
+    color: white;
+}
+
+#navbarTogglerDemo01 li a:hover {
+        color: rgb(179, 179, 179);
+}
+
+.dropdown-menu-dark  {
+    background-color: black;
+    position: absolute;
 }
 
 nav ul li {
@@ -69,7 +84,6 @@ nav ul li {
 }
 
 ul ul {
-    position: absolute;
     display: none;
     color: white;
     background-color: black;
@@ -96,12 +110,12 @@ body {
     border: solid 1px;
     width: 450px;
     height: 500px;
+    margin: 50px auto auto auto;
 }
 
 .carousel-inner img {
     width: 450px;
     height: 500px;
-    text-align: center;
 }
 
 .título {
@@ -113,7 +127,7 @@ body {
 .título2 {
     transform: translateY(-100px);
     margin-bottom: 50px;
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
 }
 
@@ -143,21 +157,9 @@ body {
     text-align: center;
 }
 
-.productos {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    row-gap: 50px;
-    justify-items: center;
-}
-
-.itemProducto {
-    list-style-type: none;
-}
-
-.itemProducto img {
-    height: 300px;
-    width: 200px;
+.card {
+    margin: 30px auto 30px auto;
+    text-align: center;
 }
 
 .quienesSomos {
@@ -211,7 +213,7 @@ body {
 
 .copyright {
     background-color: black;
-    margin-top: 30px;
+    margin-top: 50px;
     font-size: 12px;
     color: white;
     text-align: center;
@@ -225,37 +227,13 @@ body {
     text-decoration: none;
 }
 
-.menuHamburguesa {
-    color: red;
-    display: none;
-    float: right;
-}
-
-#menuHamb {
-    display: none;
-}
-
-@media screen and (max-width: 380px) {
-    .productos {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        row-gap: 50px;
-        justify-items: center;
-    }
-    
-    nav ul li {
+@media screen and (max-width: 600px) {
+    #search input {
         display: none;
     }
 
-    #menuHamb {
-        float: right;
-    }
-
-    .menuHamburguesa {
-        display: block;
-        float: right;
-        margin: 30px 0px 0px 100px;
+    #search button {
+        display: none;
     }
 
     .footerGrid {
@@ -264,11 +242,6 @@ body {
         column-gap: 3px;
         justify-items: center;
         width: 100%;
-    }
-
-    .itemProducto img {
-        height: 150px;
-        width: 100px;
     }
 
     .copyright {
@@ -282,14 +255,6 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
-    .productos {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto auto auto;
-        row-gap: 50px;
-        justify-items: center;
-    }
-
     .footerGrid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 2fr;

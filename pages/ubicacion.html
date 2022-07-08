@@ -13,27 +13,49 @@
 
 <body>
     <header>
-        <div>
+        <div class="menuLogo">
+            <div>
             <a href=../index.html> <img id="logoHeader" src="../logo.jpg" alt="logo"></a>
-            <ul>
-                <li><a class="btnLogin" href="login.html">Ingresar</a></li>
-            </ul>
-        </div>
-        <nav>
-            <ul class="menuNav">
-                <li><a href="productos.html">PRODUCTOS</a>
-                    <ul>
-                        <li><a href="../pages/productos.html#parrillas">Parrillas</a></li>
-                        <li><a href="../pages/productos.html#hornos">Hornos</a></li>
-                        <li><a href="../pages/productos.html#fogoneros">Fogoneros</a></li>
-                        <li><a href="../pages/productos.html#calefaccion">Calefacción</a></li>
-                        <li><a href="../pages/productos.html#accesorios">Accesorios</a></li>
-                    </ul>
+            </div>
+            <div>
+                <li><a id="btnLog" class="btn btn-outline-danger" href="login.html">Ingresar</a></li>
+            </div>
+        </div>   
+        <nav class="navbar-dark navbar-expand-lg">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="productos.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    PRODUCTOS
+                  </a>
+                  <ul class="dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="productos.html#parrillas">Parrillas</a></li>
+                    <li><a class="dropdown-item" href="productos.html#hornos">Hornos</a></li>
+                    <li><a class="dropdown-item" href="productos.html#fogoneros">Fogoneros</a></li>
+                    <li><a class="dropdown-item" href="productos.html#calefaccion">Calefacción</a></li>
+                    <li><a class="dropdown-item" href="productos.html#accesorios">Accesorios</a></li>
+                  </ul>
                 </li>
-                <li><a href="ubicacion.html">UBICACIÓN</a></li>
-                <li><a href="quienes-somos.html">QUÉNES SOMOS</a></li>
-                <li><a href="contacto.html">CONTACTO</a></li>
-            </ul>
+                <li class="nav-item">
+                  <a class="nav-link" href="ubicacion.html">UBICACIÓN</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="quienes-somos.html">ACERCA DE NOSOTROS</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contacto.html">CONTACTO</a>
+                </li>
+              </ul>
+              <form id="search" class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
         </nav>
     </header>
     <h3 class="título">UBICACIÓN</h3>
@@ -72,8 +94,7 @@
                 <a href="https://www.instagram.com/hierroandhome"> <img src="../iconos/instagram.png"> </a>
             </div>
         </div>
-        <p class="copyright">Copyright © 2022 Hierro & Home</p>
-        <p class="copyright">Diseñado por GK</p>
+        <p class="copyright">Copyright © 2022 Hierro & Home <br>Diseñado por GK</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
