@@ -1,0 +1,7 @@
+$Redes: (facebook: blue, instagram: red, twitter: white);
+
+@each $red, $color in $Redes {
+    .#{$red} {
+        color: $color
+    }
+}

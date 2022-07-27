@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import "variables";
+@import "variables", "bucles", "mapas", "mixins";
 
 * {
     margin: 0;
@@ -13,8 +13,7 @@
 
 #logoHeader {
     margin: 10px 10px 10px 10px;
-    width: 100px;
-    height: 100px;
+    @include boxsize(100px,100px);
     a {
         text-decoration: none;
     }
@@ -67,7 +66,7 @@ header {
 }
 
 .dropdown-menu-dark  {
-    background-color: $colorPrincipal;
+    @extend #navbarTogglerDemo01;
     position: absolute;
 }
 
@@ -77,7 +76,7 @@ nav ul li {
     font-weight: bold;
     a {
         text-decoration: none;
-        color: white;
+        color: map-get($map: $Redes, $key: twitter );
     }
 }
 

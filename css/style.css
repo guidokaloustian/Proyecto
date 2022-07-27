@@ -1,5 +1,29 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.white {
+  color: white;
+}
+
+.gray {
+  color: gray;
+}
+
+.red {
+  color: red;
+}
+
+.facebook {
+  color: blue;
+}
+
+.instagram {
+  color: red;
+}
+
+.twitter {
+  color: white;
+}
+
 * {
   margin: 0;
   padding: 0%;
@@ -12,8 +36,8 @@
 
 #logoHeader {
   margin: 10px 10px 10px 10px;
-  width: 100px;
   height: 100px;
+  width: 100px;
 }
 #logoHeader a {
   text-decoration: none;
@@ -53,20 +77,19 @@ header {
   transform: translateY(40px);
 }
 
-#navbarTogglerDemo01 {
+#navbarTogglerDemo01, .dropdown-menu-dark {
   background-color: #181818;
 }
 
-#navbarTogglerDemo01 li a {
+#navbarTogglerDemo01 li a, .dropdown-menu-dark li a {
   transition: all 0.5s;
   color: white;
 }
-#navbarTogglerDemo01 li a:hover {
+#navbarTogglerDemo01 li a:hover, .dropdown-menu-dark li a:hover {
   color: rgb(179, 179, 179);
 }
 
 .dropdown-menu-dark {
-  background-color: #181818;
   position: absolute;
 }
 
