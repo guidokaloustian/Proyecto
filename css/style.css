@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import '../css/WOW/animate.css';
 .white {
   color: white;
 }
@@ -71,9 +72,6 @@ header {
   z-index: 100;
   width: 100%;
   justify-content: space-evenly;
-}
-
-.container-fluid {
   transform: translateY(40px);
 }
 
@@ -128,17 +126,36 @@ body {
   width: 100%;
 }
 
-.título {
+.título, .títuloPrincipal {
   margin-top: 40px;
   font-size: 30px;
   text-align: center;
 }
 
 .título2 {
-  transform: translateY(-100px);
   margin-bottom: 50px;
   font-size: 50px;
   text-align: center;
+}
+
+.títuloPrincipal {
+  font-size: 50px;
+}
+
+.títuloBanner, .subtítuloBanner {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.subtítuloBanner {
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+#swiper {
+  padding-top: 50px;
+  margin-bottom: 80px;
+  background-color: rgb(179, 179, 179);
 }
 
 #linkTromen {
@@ -150,7 +167,7 @@ body {
   overflow: hidden;
   height: 50%;
   width: 100%;
-  padding-top: 60%;
+  padding-top: 50%;
 }
 .videoTromen iframe {
   position: absolute;
@@ -204,21 +221,15 @@ body {
   margin: auto 40px auto 40px;
 }
 
-.nosotrosGrid {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto auto;
-  gap: 40px 40px;
-  justify-items: center;
+.rowNosotros {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .imgQuienesSomos {
+  text-align: center;
   width: 400px;
   height: 400px;
-}
-
-.imagenMov {
-  transform: translate(50px, -150px);
 }
 
 #pie {
@@ -317,9 +328,38 @@ body {
     justify-items: center;
     width: 100%;
   }
+  .carousel-inner img {
+    height: 50%;
+  }
+  #mapa iframe {
+    height: 300px;
+    width: 300px;
+  }
+  .videoTromen {
+    display: none;
+  }
+  .imgQuienesSomos {
+    height: 300px;
+    width: 300px;
+  }
+  .quienesSomos {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .título2 {
+    font-size: 40px;
+  }
 }
 @media (min-width: 300px) and (max-width: 600px) {
   .carousel-inner img {
-    height: 400px;
+    height: 100px;
+  }
+  .videoTromen {
+    display: none;
+  }
+}
+@media (min-width: 1000px) {
+  #ultimaImagen {
+    transform: translate(100px, -200px);
   }
 }/*# sourceMappingURL=style.css.map */
