@@ -90,7 +90,7 @@ function actualizarCarrito() {
     carritoDeCompras.innerHTML = "";
     carrito.forEach((producto) => {
         const carritoDeCompras = document.getElementById("carritoDeCompras");
-        const div = document.createElement("div")
+        const div = document.createElement("div");
         div.innerHTML = `
         <p class="título">${producto.nombre}                          $ ${producto.precio}</p>
         <div class="linea"></div>`
@@ -98,5 +98,8 @@ function actualizarCarrito() {
         carritoDeCompras.appendChild(div)
     })
 }
+
+
+
 
 
