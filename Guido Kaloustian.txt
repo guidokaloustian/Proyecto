@@ -1,4 +1,1 @@
-https://github.com/guidokaloustian/Proyecto
-https://guidokaloustian.github.io/Proyecto/
-
-https://hierroandhome.000webhostapp.com/index.html
+https://github.com/guidokaloustian/Proyecto/tree/master/js
