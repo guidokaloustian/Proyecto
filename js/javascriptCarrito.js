@@ -1,5 +1,10 @@
+//array con la totalidad de los productos de la página
 const productos =[];
+
+//array en donde se van guardando los productos cuando uno clickea "comprar" en un producto
 let carrito = [];
+
+//constructorpara crear productos
 
 class Product {
     constructor (imagen, nombre, categoria, precio, id, stock) {
@@ -11,6 +16,8 @@ class Product {
     this.id = stock;
     }
 }
+
+//creación de productos en productos.html
 
 const producto1 = new Product("../images/ASADORES/116046034_982175968921836_1571557682438449073_n.jpg" ,'Parrilla Anafe + Plancheta', "Parrilla", 45000, 1, true);
 const producto2 = new Product("../images/ASADORES/140756130_3886741338025723_6649038584060871508_n.jpg",'Parrilla Gaucha', "Parrilla", 90000, 2, true);
@@ -42,6 +49,8 @@ productos.push(producto1, producto2, producto3, producto4, producto5, producto6,
     producto16, producto17, producto18, producto19, producto20, producto21, producto22, producto23,
     producto24);
 
+
+//creación de botón para agregar productos al array "carrito"
 function crearBotonComprar(producto) {
     const button = document.createElement("button");
     button.innerText = "Comprar";
@@ -52,11 +61,15 @@ function crearBotonComprar(producto) {
     return button;
 }
 
+
+//función que se reutiliza en la creación del botón (el evento del botón emplea esta función)
 function agregarAlCarrito(producto) {
     carrito.push(producto);
     actualizarCarrito();
 }
 
+
+//función para crear los productos en el html productos
 function mostrarProductos(productos) {
     const contenedorProductos = document.getElementById("contenedorProductos");
     contenedorProductos.innerHTML= "";
@@ -77,15 +90,18 @@ function mostrarProductos(productos) {
     })
 }
 
-function costoTotal(precio) {
-    let total;
-    total =+ precio;
-    return total; 
-}
+// function costoTotal(precio) {
+//     let total;
+//     total =+ precio;
+//     return total; 
+// }
 
+//activación de la función que crea los productos y un log para demostrar que efectivamente se cargan en el array "carrito"
 mostrarProductos(productos);
 console.log(carrito);
 
+
+//función que permite mostrar los productos que se van alojando en el carrito (se va actualizando)
 function actualizarCarrito() {
     carritoDeCompras.innerHTML = "";
     carrito.forEach((producto) => {
