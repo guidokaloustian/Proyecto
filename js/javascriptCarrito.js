@@ -57,6 +57,13 @@ function crearBotonComprar(producto) {
     button.classList.add("btn", "btn-primary");
     button.addEventListener("click", () => {
         agregarAlCarrito(producto);
+        Swal.fire ({
+            title: 'El producto se agregó al carrito',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: '1000'
+
+        })
     })
     return button;
 }
@@ -97,12 +104,6 @@ function mostrarProductos(productos) {
     })
 }
 
-// function costoTotal(precio) {
-//     let total;
-//     total =+ precio;
-//     return total; 
-// }
-
 //activación de la función que crea los productos y un log para demostrar que efectivamente se cargan en el array "carrito"
 mostrarProductos(productos);
 console.log(carrito);
@@ -135,8 +136,25 @@ function borrarProducto() {
     carrito.forEach(producto => {
         document.querySelector(`#botonBorrar${producto.id}`).addEventListener("click", () =>{
             let indice = carrito.findIndex(prod => prod.id === producto.id);
-            carrito.splice(indice, 1);
-            actualizarCarrito();
+            Swal.fire({
+                title: '¿Estás seguro que deseas eliminar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                carrito.splice(indice, 1);
+                actualizarCarrito();
+                  Swal.fire(
+                    'Eliminado!',
+                    'Tu producto fue eliminado.',
+                    'success'
+                  )
+                }
+              })
+            
         })
     })
 }
