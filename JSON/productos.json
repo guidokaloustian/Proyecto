@@ -1,0 +1,195 @@
+[
+    {
+        "imagen":"../images/ASADORES/116046034_982175968921836_1571557682438449073_n.jpg",
+        "nombre":"Parrilla Anafe + Plancheta",
+        "categoria":"Parrilla",
+        "precio":45000,
+        "id":1,
+        "cantidad":0
+    },    
+    {
+        "imagen":"../images/ASADORES/140756130_3886741338025723_6649038584060871508_n.jpg",
+        "nombre":"Parrilla Gaucha",
+        "categoria":"Parrilla",
+        "precio":90000,
+        "id":2,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ASADORES/142600211_113660744009407_5556108573160894008_n.jpg",
+        "nombre":"Fogonero oval Tromen",
+        "categoria":"Parrilla",
+        "precio":50000,
+        "id":3,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ASADORES/116890875_1715637125257194_1084822260713899543_n.jpg",
+        "nombre":"Chulengo con fogonero",
+        "categoria":"Parrilla",
+        "precio":70000,
+        "id":4,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ASADORES/97291465_298159924677751_346373515123189563_n.jpg",
+        "nombre":"Estaca",
+        "categoria":"Parrilla",
+        "precio":27000,
+        "id":5,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/HORNOS/97909009_3320645517946037_1358515264965856215_n.jpg",
+        "nombre":"Horno para doble plancha",
+        "categoria":"Horno",
+        "precio":120000,
+        "id":6,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/HORNOS/97281413_572159013504728_8682794338570512983_n.jpg",
+        "nombre":"Horno para una plancha",
+        "categoria":"Horno",
+        "precio":100000,
+        "id":7,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/FOGONEROS/140763227_113902270550874_5912814058286206832_n.jpg",
+        "nombre":"Fogonero + estaca + olla de fundición",
+        "categoria":"Fogonero",
+        "precio":130000,
+        "id":8,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/FOGONEROS/139931886_167524351796613_2994888001206301935_n.jpg",
+        "nombre":"Fogonero + estaca + olla de fundición (con ruedas)",
+        "categoria":"Fogonero",
+        "precio":180000,
+        "id":9,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/FOGONEROS/119370203_158004945962565_5041745894770272061_n.jpg",
+        "nombre":"Fogonero + estaca",
+        "categoria":"Fogonero",
+        "precio":90000,
+        "id":10,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/FOGONEROS/119174496_330722218259376_7841848234423859971_n.jpg",
+        "nombre":"Fogonero + estaca (cilindro)",
+        "categoria":"Calefacción",
+        "precio":70000,
+        "id":11,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/CALEFACCIÓN/97279239_638829013375024_3057918860343200477_n.jpg",
+        "nombre":"Calefacción 9.500 kcal",
+        "categoria":"Calefacción",
+        "precio":80000,
+        "id":12,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/CALEFACCIÓN/97317306_634790557073683_889240123842664369_n.jpg",
+        "nombre":"Calefacción 13.000 kcal",
+        "categoria":"Calefacción",
+        "precio":100000,
+        "id":13,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/CALEFACCIÓN/97359153_238031987296316_384965395224210694_n.jpg",
+        "nombre":"Calefacción hasta 25.000 kcal",
+        "categoria":"Calefacción",
+        "precio":130000,
+        "id":14,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/CALEFACCIÓN/98132827_2905244676236029_523896004174099494_n.jpg",
+        "nombre":"Calefacción 20.000 kcal",
+        "categoria":"Calefacción"
+        ,"precio":115000,
+        "id":15,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/CALEFACCIÓN/98256178_247493976475047_1879116458340984041_n.jpg",
+        "nombre":"Calefacción 8.000 kcal",
+        "categoria":"Calefacción",
+        "precio":55000,
+        "id":16,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/104216653_101053421634447_6708615663298082633_n.jpg",
+        "nombre":"Destapacorchos de pared",
+        "categoria":"Accesorios",
+        "precio":3500,
+        "id":17,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/142627510_885929961948178_457163731430816692_n.jpg",
+        "nombre":"Parrilla con pinchos",
+        "categoria":"Accesorios",
+        "precio":22600,
+        "id":18,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/82772333_2649121735365933_920639196554220246_n.jpg",
+        "nombre":"Tablas",
+        "categoria":"Accesorios",
+        "precio":9300,
+        "id":19,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/97199651_673485583222449_6797346846089783825_n.jpg",
+        "nombre":"Planchitas + pocillos",
+        "categoria":"Accesorios",
+        "precio":10000,
+        "id":20,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/97244198_283553573037001_911733662895511298_n.jpg",
+        "nombre":"Cocina cohete",
+        "categoria":"Accesorios",
+        "precio":9500,
+        "id":21,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/97376342_241852600244503_5645329381360841669_n.jpg",
+        "nombre":"Anafe eléctrico",
+        "categoria":"Accesorios",
+        "precio":9950,
+        "id":22,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/97522129_2720100364943526_4404785555803235711_n.jpg",
+        "nombre":"Estaca Aluminio",
+        "categoria":"Accesorios",
+        "precio":30000,
+        "id":23,
+        "cantidad":0
+    },
+    {
+        "imagen":"../images/ACCESORIOS/97943775_242912500314915_3510943994901043155_n.jpg",
+        "nombre":"Disco de arado",
+        "categoria":"Accesorios",
+        "precio":60000,
+        "id":24,
+        "cantidad":0
+    }
+    
+]
