@@ -27,6 +27,19 @@
     }
 }
 
+.btn-comprar {
+    margin: auto 60px 10px 60px;
+}
+
+#btnCompraFinal {
+    text-align: center;
+}
+
+.btn-comprafinal {
+    text-align: center;
+    margin: auto auto 20px auto;
+}
+
 #btnLog {
     transform: translate(-30px, 30px);
 }
@@ -191,6 +204,7 @@ margin: 20px auto 20px auto;
 
 #contenedorProductos {
     width: 100%;
+    margin: 0;
 }
 
 .card {
