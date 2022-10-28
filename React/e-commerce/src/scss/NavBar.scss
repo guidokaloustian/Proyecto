@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import "../variables/variables";
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tituloNavBar {
+  background-color: $colorPrincipal;
+  color: rgb(65, 64, 64);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0;
+  padding-left: 20px;
+
+}
+
+.navbar {
+  background-color: $colorPrincipal;
+  display: flex;
+  justify-content: space-between;
+  ul li a {
+    margin-left: 80px;
+    color: white;
+    transition: all 0.5s;
+    &:hover {
+      color: rgb(179, 179, 179);
+    }
+  }
+}
+
+.carrito-img {
+  position: relative;
+  color: white;
+  margin-right: 100px;
+  text-align: end;
+  transform: translateY(-40px);
+}
+
+.badge {
+  background-color: red;
+  border-radius: 20px;
+  transform: translate(-7px, -14px);
+}
+
+#greeting {
+  text-align: center;
+}
+
