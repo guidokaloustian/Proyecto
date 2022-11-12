@@ -12,7 +12,14 @@
   padding-bottom: 30px;
   margin: 0;
   padding-left: 20px;
+  text-decoration: none;
+  a:hover {
+    color: rgb(65, 64, 64);
+  }
+}
 
+.link {
+  text-decoration: none;
 }
 
 .navbar {
@@ -34,7 +41,7 @@
   color: white;
   margin-right: 100px;
   text-align: end;
-  transform: translateY(-40px);
+  transform: translateX(100px);
 }
 
 .badge {

@@ -1,0 +1,47 @@
+.contenedorPrincipal {
+    margin: 50px;
+}
+
+.contenedorVista {
+    display: flex;
+}
+
+.contenedorCantidad {
+    @extend .contenedorVista;
+    margin-top: 80px;
+    justify-content: center;
+}
+
+.imgVista {
+    height: 500px;
+    width: 300px;
+    margin-right: 100px;
+    margin-left: 100px;
+
+}
+
+.precioVista {
+    margin-top: 30px;
+    font-size: 24px;
+    strong {
+        text-decoration: underline;
+    }
+}
+
+.textDescripcion {
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+.btn-outline-danger {
+    height: 100%;
+}
+
+#btnCarrito {
+    text-align: center;
+}
+
+.cantidad {
+    margin-left: 10px;
+    margin-right: 10px;
+}
