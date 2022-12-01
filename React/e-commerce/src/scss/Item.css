@@ -1,0 +1,20 @@
+.card {
+  width: 19rem;
+  margin: 50px;
+  display: flex;
+}
+.card img {
+  height: 400px;
+}
+
+.linkBtn {
+  text-decoration: none;
+  color: white;
+}
+.linkBtn:hover {
+  color: white;
+}
+
+#contenedorProductos {
+  margin: 0px;
+}/*# sourceMappingURL=Item.css.map */
