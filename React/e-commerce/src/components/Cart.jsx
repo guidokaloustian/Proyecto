@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import "../scss/Cart.scss";
-import eliminar from "../img/eliminar.png"
+import eliminar from "../img/eliminar.png";
 
 const Cart = () => {
-    const { cartList, deleteItem, clear, totalPerItem} = useContext(CartContext);
+    const { cartList, deleteItem, clear, totalPerItem, totalCost} = useContext(CartContext);
 
     return (
     <>
@@ -41,6 +41,7 @@ const Cart = () => {
             cartList.map(item => 
                 <div className="contenedorTotal">
                     <p>{item.itemName}                 x{item.itemQty}      ${totalPerItem(item.itemId)}</p>
+                    <p>Total: {totalCost()}</p>
                 </div>
                 )
             

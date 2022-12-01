@@ -40,12 +40,18 @@ const CartContextProvider = ({children}) => {
     }
 
     const totalPerItem = (id) => {
-        let item = cartList.find(prod => prod.idItem === id);
+        let item = cartList.find(prod => prod.idItem == id);
         return item.itemCost * item.itemQty;
     }
 
+    const totalCost = (id) => {
+        let total = cartList.map(prod => 
+            total += prod.itemCost)
+        return total;
+    }
+
     return (
-        <CartContext.Provider value={{cartList, addToCart, clear, deleteItem, totalQty, totalPerItem}}>
+        <CartContext.Provider value={{cartList, addToCart, clear, deleteItem, totalQty, totalPerItem, totalCost}}>
             {children}
         </CartContext.Provider>
     )
