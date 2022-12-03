@@ -40,13 +40,12 @@ const CartContextProvider = ({children}) => {
     }
 
     const totalPerItem = (id) => {
-        let item = cartList.find(prod => prod.idItem == id);
+        let item = cartList.find(prod => prod.itemId === id);
         return item.itemCost * item.itemQty;
     }
 
     const totalCost = (id) => {
-        let total = cartList.map(prod => 
-            total += prod.itemCost)
+        let total = cartList.reduce((accum, item) => accum + (item.itemCost * item.itemQty), 0);
         return total;
     }
 

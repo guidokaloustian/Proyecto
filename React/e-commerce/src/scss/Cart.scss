@@ -10,8 +10,8 @@
 
 .imgCart {
     margin-left: 30px;
-    width: 150px;
-    height: 200px;
+    width: 70px;
+    height: 120px;
     flex: 1 1 50px;
 }
 
@@ -26,6 +26,7 @@
 
 .tituloCart {
     flex: 1 1 auto;
+    max-width: 300px;
 }
 
 .contenedorTexto {
@@ -34,6 +35,7 @@
 
 .textoCart {
     flex: 1 1 auto;
+    font-size: 14px;
 } 
 
 .precioCart {
@@ -44,8 +46,30 @@
     flex: 1 1 auto;
 }
 
+.btns-comprafinal {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
 #btnDeleteAll {
     margin-top: 30px;
     margin-bottom: 30px;
+    text-align: center;
+}
+
+.contenedorTotal {
+    text-align: center;
+}
+
+.resumenText {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: solid;
+    text-decoration: underline;
+}
+
+.total {
+    margin-top: 50px;
     text-align: center;
 }

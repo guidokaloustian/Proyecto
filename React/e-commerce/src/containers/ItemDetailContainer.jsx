@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { products } from '../utils/products'
 import '../scss/ItemListContainer.scss';
-import { customFetch } from '../utils/customFetch';
+import { firestoreFetchDetail } from "../utils/firestoreFetch";
 import ItemDetail from '../components/ItemDetail';
 import { useParams } from 'react-router-dom';
 
@@ -9,11 +8,11 @@ const Products = (props) => {
   const [prod, setProd] = useState([])
   const { itemID } = useParams();
 
-    useEffect(() => {
-        customFetch(2000, products.find(item => item.id == itemID))
-        .then(response => setProd(response))
+  useEffect(() => {
+    firestoreFetchDetail(itemID)
+        .then(result => setProd(result))
         .catch(err => console.log(err))
-    })
+});
 
     return (
       <>
