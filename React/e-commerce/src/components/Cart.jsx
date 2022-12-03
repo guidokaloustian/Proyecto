@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import Swal from 'sweetalert2';
 import "../scss/Cart.scss";
 import eliminar from "../img/eliminar.png";
-import { serverTimestamp } from "firebase/firestore";
+import { serverTimestamp, doc, setDoc, collection, updateDoc, increment } from "firebase/firestore";
+import { db } from '../utils/firebaseConfig';
 
 const Cart = () => {
     const { cartList, deleteItem, clear, totalPerItem, totalCost} = useContext(CartContext);
@@ -23,7 +25,32 @@ const Cart = () => {
             })),
             total: totalCost()            
         }
-        console.log(order);
+
+        const createOrderInFiresteroe = async () => {
+            const orderId = doc(collection(db, "orders"));
+            await setDoc(orderId, order);
+            return orderId
+        }
+
+        createOrderInFiresteroe()
+            .then(response => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Orden ' + response.id + ' creada exitosamente',
+                    showConfirmButton: false,
+                    timer: 2000
+                  })
+                  cartList.forEach(async(item) => {
+                    const itemRef = doc(db, "products", item.itemId);
+                    await updateDoc(itemRef, {
+                        stock: increment(-item.itemQty)
+                      });
+                  });
+                  clear()
+                })
+            .catch(err => console.log(err))
+
     }
 
     return (
