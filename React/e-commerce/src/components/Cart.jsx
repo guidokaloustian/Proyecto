@@ -7,7 +7,7 @@ import { serverTimestamp, doc, setDoc, collection, updateDoc, increment } from "
 import { db } from '../utils/firebaseConfig';
 
 const Cart = () => {
-    const { cartList, deleteItem, clear, totalPerItem, totalCost} = useContext(CartContext);
+    const { cartList, deleteItem, clear, clearMsg, totalPerItem, totalCost} = useContext(CartContext);
     
     const createOrder = () => {
         let order = {
@@ -38,8 +38,7 @@ const Cart = () => {
                     position: 'center',
                     icon: 'success',
                     title: 'Orden ' + response.id + ' creada exitosamente',
-                    showConfirmButton: false,
-                    timer: 2000
+                    showConfirmButton: true
                   })
                   cartList.forEach(async(item) => {
                     const itemRef = doc(db, "products", item.itemId);
@@ -118,7 +117,7 @@ const Cart = () => {
         {
             cartList.length > 0 &&
             <div id='btnDeleteAll'>
-            <button className='btn btn-danger btns-comprafinal' onClick={() => {clear()}}> Vaciar carrito </button>
+            <button className='btn btn-danger btns-comprafinal' onClick={() => {clearMsg() }}> Vaciar carrito </button>
             <button className='btn btn-danger btns-comprafinal' onClick={() => {createOrder()}}> Crear orden </button>
             </div>
         }
