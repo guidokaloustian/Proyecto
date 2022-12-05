@@ -8,7 +8,8 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([]);
 
     const addToCart = (item, qty) => {
-        let checkProd = cartList.find(prod => prod.idItem === item.id);
+        let checkProd = cartList.find(prod => prod.itemId === item.id);
+        console.log(cartList);
 
         if (checkProd === undefined) {
             setCartList([
@@ -23,6 +24,9 @@ const CartContextProvider = ({children}) => {
             },]);
         } else {
             checkProd.itemQty += qty;
+            setCartList([
+                ...cartList
+            ])
         }
     }
 
