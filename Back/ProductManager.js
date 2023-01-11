@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from 'fs';
 
-class ProductManager {
+export class ProductManager {
   static #id = 0;
 
   constructor() {
@@ -30,12 +30,15 @@ class ProductManager {
     }
   }
 
-  async getProducts() {
+  async getProducts(limit) {
     try {
       if (fs.existsSync(this.path)) {
         const infoProductJson = await fs.promises.readFile(this.path, "utf-8");
-        const infoProduct = JSON.parse(infoProductJson);
-        return infoProduct;
+        if (limit) {
+          return JSON.parse(infoProductJson).slice(0, limit);        
+        } else {
+          return JSON.parse(infoProductJson);
+        }
       } else {
         return [];
       }
@@ -49,7 +52,7 @@ class ProductManager {
       if (fs.existsSync(this.path)) {
         const fileInfoJson = await fs.promises.readFile(this.path, "utf-8");
         const fileInfo = JSON.parse(fileInfoJson);
-        return fileInfo.find((item) => item.id === id);
+        return fileInfo.find((item) => item.id === parseInt(id));
       } else {
         console.error("Not found");
       }
@@ -117,7 +120,7 @@ class ProductManager {
 
 const productManager = new ProductManager();
 
-prueba = async () => {
+let prueba = async () => {
   await productManager.addProduct(
     "Parrilla Anafe + Plancheta",
     "Anafe de acero aluminio",
@@ -150,30 +153,10 @@ prueba = async () => {
     "Parrilla 1m x 1m",
     100000,
     "./image/image1",
-    1
+    1237,
+    25
   );
-
-  let found = await productManager.getById(2);
-
-  console.log(found);
-
-  let update = await productManager.updateProduct(
-    2,
-    "Nueva parrilla",
-    null,
-    9999999,
-    null,
-    123,
-    100
-  );
-
-  await productManager.deleteById(3);
-
-  const show = await productManager.getProducts();
-
-  console.log(show);
 };
 
-prueba();
 
 
