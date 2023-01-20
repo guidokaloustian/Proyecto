@@ -1,31 +1,45 @@
-import fs from 'fs';
+import fs from "fs";
 
 export class ProductManager {
-  static #id = 0;
-
   constructor() {
     this.products = [];
     this.path = "./JSON/products.json";
   }
 
-  async addProduct(title, description, price, thumbnail, code, stock) {
-    if (!title || !description || !price || !thumbnail || !code || !stock) {
-      console.log("Debe completar todos los campos");
+  async addProduct(
+    title,
+    description,
+    category,
+    price,
+    thumbnails,
+    code,
+    stock,
+    status = true
+  ) {
+    if (!title || !description || !category || !price || !code || !stock) {
+      console.log("You need to complete all fields.");
     } else {
+      this.products = await this.getProducts();
       const product = {
-        id: this.#generarId(),
+        id:
+          this.products.length === 0
+            ? 1
+            : this.products[this.products.length - 1].id + 1,
         title,
         description,
+        category,
         price,
-        thumbnail,
+        thumbnails,
         code,
         stock,
+        status,
       };
       if (this.#validateCode(code) === undefined) {
         this.products.push(product);
         await fs.promises.writeFile(this.path, JSON.stringify(this.products));
+        return product;
       } else {
-        console.error(`Ya existe un producto con el code "${code}".`);
+        console.error(`Already exists a product with code "${code}".`);
       }
     }
   }
@@ -35,7 +49,7 @@ export class ProductManager {
       if (fs.existsSync(this.path)) {
         const infoProductJson = await fs.promises.readFile(this.path, "utf-8");
         if (limit) {
-          return JSON.parse(infoProductJson).slice(0, limit);        
+          return JSON.parse(infoProductJson).slice(0, limit);
         } else {
           return JSON.parse(infoProductJson);
         }
@@ -50,9 +64,9 @@ export class ProductManager {
   async getById(id) {
     try {
       if (fs.existsSync(this.path)) {
-        const fileInfoJson = await fs.promises.readFile(this.path, "utf-8");
-        const fileInfo = JSON.parse(fileInfoJson);
-        return fileInfo.find((item) => item.id === parseInt(id));
+        const fileInfo = await this.getProducts();
+        const product = fileInfo.find((item) => item.id === parseInt(id));
+        return product;
       } else {
         console.error("Not found");
       }
@@ -61,42 +75,34 @@ export class ProductManager {
     }
   }
 
-  async updateProduct(id, newTitle, newDescription, newPrice, newThumbnail, newCode, newStock) {
+  async updateProduct(id, obj) {
     try {
       if (fs.existsSync(this.path)) {
-        let infoProducts = await fs.promises.readFile(this.path, "utf-8");
-        infoProducts = JSON.parse(infoProducts);
+        let infoProducts = await this.getProducts();
         let found = this.#idExists(id, infoProducts);
         let fileUpdated = infoProducts.map((item) =>
-          item === found
-            ? {
-                id,
-                title: newTitle,
-                description: newDescription,
-                price: newPrice,
-                thumbnail: newThumbnail,
-                code: newCode,
-                stock: newStock,
-              }
-            : item
+          item === found ? { ...item, ...obj, id } : item
         );
 
+        found = await this.#idExists(id, fileUpdated);
         infoProducts = JSON.stringify(fileUpdated);
         await fs.promises.writeFile(this.path, infoProducts);
+        return found;        
       }
     } catch (error) {
-      console.log(error);
+      return error;
     }
   }
 
   async deleteById(id) {
     try {
-      if(fs.existsSync(this.path)) {
-      const infoFileJson = await fs.promises.readFile(this.path, "utf-8");
-      const infoFile = JSON.parse(infoFileJson);
-      let infoDeleted = infoFile.filter((item) => item.id !== id);
-      const infoDeletedJson = JSON.stringify(infoDeleted);
-      await fs.promises.writeFile(this.path, infoDeletedJson);
+      if (fs.existsSync(this.path)) {
+        const infoFileJson = await fs.promises.readFile(this.path, "utf-8");
+        const infoFile = JSON.parse(infoFileJson);
+        let infoDeleted = infoFile.filter((item) => item.id !== id);
+        const infoDeletedJson = JSON.stringify(infoDeleted);
+        await fs.promises.writeFile(this.path, infoDeletedJson);
+        return id;
       }
     } catch (error) {
       console.log(error);
@@ -107,13 +113,8 @@ export class ProductManager {
     return array.find((item) => item.id === id);
   }
 
-  #generarId() {
-    ProductManager.#id++;
-    return ProductManager.#id;
-  }
-
   #validateCode(code) {
-    let found = this.products.find(item => item.code === code);
+    let found = this.products.find((item) => item.code === code);
     return found;
   }
 }
@@ -157,6 +158,3 @@ let prueba = async () => {
     25
   );
 };
-
-
-
