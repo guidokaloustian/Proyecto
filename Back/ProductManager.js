@@ -101,8 +101,9 @@ export class ProductManager {
         const infoFile = JSON.parse(infoFileJson);
         let infoDeleted = infoFile.filter((item) => item.id !== id);
         const infoDeletedJson = JSON.stringify(infoDeleted);
+        console.log(infoDeletedJson);
         await fs.promises.writeFile(this.path, infoDeletedJson);
-        return id;
+        return 'El producto con el id ' + id + ' ha sido eliminado con éxito.';
       }
     } catch (error) {
       console.log(error);
@@ -118,8 +119,6 @@ export class ProductManager {
     return found;
   }
 }
-
-const productManager = new ProductManager();
 
 let prueba = async () => {
   await productManager.addProduct(

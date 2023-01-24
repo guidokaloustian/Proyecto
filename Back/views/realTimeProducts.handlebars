@@ -1,0 +1,31 @@
+<h1>Products in real time with WebSocket.</h1>
+<form id="addForm">
+    Nombre del producto: <input type="text" name="name" id="name">
+    <br>
+    Descripción del producto: <input type="text" name="description" id="description"> 
+    <br>
+    Precio del producto: <input type="text" name="price" id="price"> 
+    <br>
+    Categoría del producto: <input type="text" name="category" id="category">
+    <br>
+    Código del producto: <input type="number" name="code" id="code">
+    <br>
+    Stock del producto: <input type="number" name="stock" id="stock">
+    <br>
+    <input type="submit" value="Agregar">
+</form>
+<br>
+<form id="delForm">
+    ID del producto a eliminar: <input type="number" name="productId" id="productId">
+    <input type="submit" value="Eliminar">
+</form>
+<div id="prodContainer">
+{{#each products}}
+<h2>{{title}}</h2>
+<h3>{{description}}</h3>
+<h4>${{price}}</h4>
+{{/each}}
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/index.js"></script>
