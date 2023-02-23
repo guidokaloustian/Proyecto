@@ -6,7 +6,7 @@ export default class ProductsMongoManager {
       let products = await productsModel.aggregate([
         { $sort: { price: order } },
       ]);
-      products = await productsModel.paginate({category}, { limit, page });
+      products = await productsModel.paginate({}, { limit, page });
       return await products;
     } catch (error) {
       console.log(error);

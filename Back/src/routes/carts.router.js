@@ -48,11 +48,22 @@ router.post('/addProduct', async (req,res)=> {
   }
 })
 
-router.delete("/:cartId/product/:productId", async (req, res) => {
+router.put("/:cartId", async (req, res) => {
+  try {
+    const {cartId} = req.params;
+    const {newArray} = req.body;
+    await cartsManager.updateCart(cartId, newArray);
+    res.status(200).json({ message: "Products replaced succesfully" });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.delete("/:cartId/products/:productId", async (req, res) => {
   try {
     let {cartId, productId} = req.params;
     const product = await cartsManager.deleteProductFromCart(cartId, productId);
-    res.status(201).json({ message: "Product added successfully to cart", product });
+    res.status(200).json({ message: "Product deleted successfully from cart", product });
   } catch (error) {
     res.status(400).send(error.message);
   }
