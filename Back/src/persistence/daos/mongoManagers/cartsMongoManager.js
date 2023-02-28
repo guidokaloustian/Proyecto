@@ -12,8 +12,8 @@ export default class CartsMongoManager {
 
   async getAll() {
     try {
-      const carts = await cartsModel.find();
-      return carts;
+      const cart = await cartsModel.find();
+      return cart;
     } catch (error) {
       console.log(error);
     }
