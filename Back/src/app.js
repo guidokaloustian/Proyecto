@@ -10,8 +10,9 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import "./persistence/dbConfig.js";
-import { productsModel } from "./persistence/models/products.model.js";
 import { cartsModel } from "./persistence/models/carts.model.js";
+import passport from "passport";
+import './passport/passportStrategies.js'
 
 const PORT = 8080;
 const app = express();
@@ -28,6 +29,9 @@ app.use(session({
   secret:'secretKey',
   cookie:{maxAge:30000}
 }))
+//Passport
+app.use(passport.initialize())
+app.use(passport.session())
 
 //Managers
 const productManager = new ProductManager();

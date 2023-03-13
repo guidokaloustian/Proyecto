@@ -20,9 +20,13 @@ router.get('/login', isLogged, (req,res)=> {
     res.render('login')
 })
 
-router.get("/products", auth, async (req, res) => {
+router.get('/password', (req, res) => {
+    res.render('changePass')
+})
+
+router.get("/products", async (req, res) => {
     const products = await productsModel.find().lean();
-    res.render("productsRender", { products, email:req.session.email});
+    res.render('productsRender', { products, email:req.session.email});
   });
 
 export default router;
