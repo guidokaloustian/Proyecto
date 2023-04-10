@@ -1,20 +1,23 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import { __dirname } from "./utils.js";
-import { ProductManager } from "./persistence/daos/fileManagers/productManager.js";
+import { ProductManager } from "./DAL/daos/fileManagers/productManager.js";
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
+import cartsRouter2 from "./routes/carts2.router.js";
+import usersRouter2 from "./routes/users2.router.js"
 import viewsRouter from "./routes/views.router.js";
 import usersRouter from "./routes/users.router.js";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import "./persistence/dbConfig.js";
-import { cartsModel } from "./persistence/models/carts.model.js";
+import "./DAL/dbConfig.js";
+import { cartsModel } from "./DAL/models/carts.model.js";
 import passport from "passport";
 import './passport/passportStrategies.js'
+import config from './config.js'
 
-const PORT = 8080;
+const PORT = config.port;
 const app = express();
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
@@ -29,6 +32,7 @@ app.use(session({
   secret:'secretKey',
   cookie:{maxAge:30000}
 }))
+
 //Passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -42,10 +46,14 @@ app.set("view engine", "handlebars");
 app.set("views", __dirname + "/views");
 
 //Routes
-app.use("/api/products", productsRouter);
-app.use("/api/carts", cartsRouter);
+// app.use("/api/products", productsRouter2)
+app.use("/products", productsRouter)
+app.use("/api/carts", cartsRouter2)
+app.use("/api/users", usersRouter2)
+app.use("/carts", cartsRouter)
 app.use('/views', viewsRouter)
 app.use('/users', usersRouter)
+// app.use('/api/users', usersRouter2)
 app.use('/', (req,res)=> {
   res.redirect('/views/login')
 })

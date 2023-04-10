@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { productsModel } from "../persistence/models/products.model.js";
+import { productsModel } from "../DAL/models/products.model.js";
 import { auth, isLogged } from '../middlewares/auth.middleware.js'
 
 const router = Router();
@@ -24,7 +24,7 @@ router.get('/password', (req, res) => {
     res.render('changePass')
 })
 
-router.get("/products", async (req, res) => {
+router.get("/products"  , async (req, res) => {
     const products = await productsModel.find().lean();
     res.render('productsRender', { products, email:req.session.email});
   });

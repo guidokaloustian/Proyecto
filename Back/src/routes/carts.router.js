@@ -1,8 +1,10 @@
 import { Router } from "express";
-import CartsManager from '../persistence/daos/mongoManagers/cartsMongoManager.js';
+import CartsManager from '../DAL/daos/mongoManagers/cartsMongoManager.js';
+import { ProductManager } from "../DAL/daos/fileManagers/productManager.js";
 
 const router = Router();
 const cartsManager = new CartsManager();
+const productManager = new ProductManager();
 
 router.get("/:cartId", async (req, res) => {
   try {
@@ -40,11 +42,15 @@ router.post('/addProduct', async (req,res)=> {
   try {
     const {cartId, productId} = req.body;
     const cart = await cartsManager.getCartById(cartId);
+    if (!cart) return res.json({messae: 'Cart not found'})
+    const product = await productManager.getById(productId)
+    if(!product) return res.json({messae: 'Product not found'})
+    const productExists = cart.products.find((e)=> e._id === productId)
     cart.products.push(productId);
     cart.save();
     res.json({message: 'Product added succesfully'})
   } catch (error) {
-    
+    console.log(error);
   }
 })
 

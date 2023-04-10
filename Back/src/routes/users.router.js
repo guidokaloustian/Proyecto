@@ -1,23 +1,24 @@
 import { Router } from "express";
-import { usersModel } from "../persistence/models/users.model.js";
-import { hashPass } from "../utils.js";
+import { hashData } from "../utils.js";
 import { comparePasswords } from "../utils.js";
+import UsersManager from "../DAL/daos/mongoManagers/usersMongoManager.js";
 import passport from "passport";
 
-const router = Router();
+const router = Router()
+const usersManager = new UsersManager()
 
-// router.post("/registro", async (req, res) => {
-//   const { email, password } = req.body;
-//   const userExists = await usersModel.find({ email });
-//   if (userExists.length !== 0) {
-//     res.redirect("/views/errorRegistro");
-//   } else {
-//     const hashPassword = await hashPass(password);
-//     const newUser = { ...req.body, password: hashPassword };
-//     await usersModel.create(newUser);
-//     res.redirect("/views/login");
-//   }
-// });
+router.post("/registro", async (req, res) => {
+  const { email, password } = req.body;
+  const userExists = await usersManager.findByEmail({ email });
+  if (userExists.length !== 0) {
+    res.redirect("/views/errorRegistro"); 
+  } else {
+    const hashData = await hashData(password);
+    const newUser = { ...req.body, password: hashData };
+    await usersManager.createUser(newUser);
+    res.redirect("/views/login");
+  }
+});
 
 // router.post(
 //   "/registro",
@@ -30,7 +31,7 @@ const router = Router();
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const user = await usersModel.find({ email });
+  const user = await usersManager.findByEmail({ email });
   if (user.length !== 0) {
     const checkPass = await comparePasswords(password, user[0].password);
     if (checkPass) {
@@ -67,12 +68,12 @@ router.get("/logout", async (req, res) => {
 
 router.post('/password', async (req, res) => {
   const { email, oldPass, newPass } = req.body;
-  const user = await usersModel.find({ email });
+  const user = await usersManager.findByEmail({ email });
   if (user.length !== 0) {
     const checkPass = await comparePasswords(oldPass, user[0].password);
     if (checkPass) {
       const newUser = user[0];
-      newUser.password = await hashPass(newPass);
+      newUser.password = await hashData(newPass);
       await newUser.save();
       return res.send("Contraseña cambiada con éxito");
     }

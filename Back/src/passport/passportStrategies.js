@@ -1,8 +1,9 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
-import { usersModel } from "../persistence/models/users.model.js";
-import { hashPass, comparePasswords } from "../utils.js";
+import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
+import { usersModel } from "../DAL/models/users.model.js";
+import { hashData, comparePasswords } from "../utils.js";
 
 // Local passport
 passport.use(
@@ -14,14 +15,18 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, email, password, done) => {
-      const user = await usersModel.find({ email });
-      if (user.length !== 0) {
-        return done(null, false);
+      try {
+        const user = await usersModel.find({ email });
+        if (user.length !== 0) {
+          return done(null, false);
+        }
+        const hashDataword = await hashData(password);
+        const newUser = { ...req.body, password: hashDataword };
+        const newUserBD = await usersModel.create(newUser);
+        done(null, newUserBD);
+      } catch (error) {
+        done(error);
       }
-      const hashPassword = await hashPass(password);
-      const newUser = { ...req.body, password: hashPassword };
-      const newUserBD = await usersModel.create(newUser);
-      done(null, newUserBD);
     }
   )
 );
@@ -43,7 +48,7 @@ passport.use(
           last_name: profile._json.name.split(" ")[1] || " ",
           email: profile._json.email,
           password: " ",
-        }
+        };
         const dbUser = await usersModel.create(newUser);
         done(null, dbUser);
       } else {
@@ -53,32 +58,50 @@ passport.use(
   )
 );
 
-// passport.use(
-//   "login",
-//   new LocalStrategy(
-//     {
-//       usernameField: "email",
-//       passwordField: "password",
-//       passReqToCallback: true,
-//     },
-//     async (req, email, password, done) => {
-//       const user = await usersModel.find({ email });
-//       if (user.length !== 0) {
-//         const checkPass = await comparePasswords(password, user[0].password);
-//         if (checkPass) {
-//             return done(null, user);
-//         }
-//       }
-//       done(null, false);
-//     }
-//   )
-// );
+passport.use(
+  "login",
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+      passReqToCallback: true,
+    },
+    async (req, email, password, done) => {
+      try {
+        const user = await usersModel.findOne({ email });
+        if (!user) return done(null, false);
+        const checkPass = await comparePasswords(password, user.password);
+        if (!checkPass) return done(null, false);
+        done(null, user);
+      } catch (error) {
+        done(error);
+      }
+    }
+  )
+);
+
+passport.use(
+  "jwt",
+  new JwtStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: "secretKey",
+    },
+    async (jwy_payload, done) => {
+      try {
+        done(null, jwy_payload.user);
+      } catch (error) {
+        done(error);
+      }
+    }
+  )
+);
 
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
 
-passport.deserializeUser(async (_id, done) => {
-  const user = await usersModel.findById(_id);
+passport.deserializeUser(async (id, done) => {
+  const user = await usersModel.findById(id);
   done(null, user);
 });
