@@ -5,19 +5,28 @@ import {
 } from "../services/users.services.js";
 
 export async function create(req, res) {
-  const { first_name, last_name, email, age, password, rol } = req.body;
-  if (!first_name || !last_name || !email || !age || !password || !rol) {
+  let predRole = 'user'
+  const { first_name, last_name, email, age, password  } = req.body;
+  if (!first_name || !last_name || !email || !age || !password) {
     res.status(400).json({ error: "Field missing" });
   }
   try {
     const userExists = await findByEmail({ email });
-    console.log(userExists);
     if (userExists.length !== 0) {
-      res.status(200).json({ error: "User already exists" });
+      // res.status(200).json({ error: "User already exists" });
+      res.redirect("/views/errorRegistro"); 
     } else {
-      const newUser = await createUser(req.body);
-      res.status(200).json({ message: "User created", newUser });
-
+      if (email === "adminCoder2@coder.com" && password === "adminCod3r123") {
+        req.session.isAdmin = true;
+        predRole = 'isAdmin'
+        console.log({...req.body, role: predRole});
+      } else {
+        req.session.isAdmin = false;
+      }
+      console.log({...req.body, role: predRole});
+      const newUser = await createUser({...req.body, role: predRole});
+      // res.status(200).json({ message: "User created", newUser });
+      res.redirect("/views/login");
     }
   } catch (error) {
     res.status(500).json(error);

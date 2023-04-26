@@ -3,15 +3,16 @@ import handlebars from "express-handlebars";
 import { __dirname } from "./utils.js";
 import { ProductManager } from "./DAL/daos/fileManagers/productManager.js";
 import productsRouter from "./routes/products.router.js";
+import productsRouter2 from "./routes/products2.router.js";
 import cartsRouter from "./routes/carts.router.js";
 import cartsRouter2 from "./routes/carts2.router.js";
 import usersRouter2 from "./routes/users2.router.js"
 import viewsRouter from "./routes/views.router.js";
 import usersRouter from "./routes/users.router.js";
+import messagesRouter from './routes/messages.router.js'
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import "./DAL/dbConfig.js";
 import { cartsModel } from "./DAL/models/carts.model.js";
 import passport from "passport";
 import './passport/passportStrategies.js'
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("secretCookie"));
 app.use(session({
   store: new MongoStore({
-    mongoUrl:'mongodb+srv://guidok:guidok@cluster0.fkpiocz.mongodb.net/e-commerce?retryWrites=true&w=majority'
+    mongoUrl:config.mongo_uri
   }),
   resave:false,
   saveUninitialized:false,
@@ -48,11 +49,13 @@ app.set("views", __dirname + "/views");
 //Routes
 // app.use("/api/products", productsRouter2)
 app.use("/products", productsRouter)
+app.use("/api/products", productsRouter2)
 app.use("/api/carts", cartsRouter2)
 app.use("/api/users", usersRouter2)
 app.use("/carts", cartsRouter)
 app.use('/views', viewsRouter)
 app.use('/users', usersRouter)
+app.use('/messages', messagesRouter)
 // app.use('/api/users', usersRouter2)
 app.use('/', (req,res)=> {
   res.redirect('/views/login')

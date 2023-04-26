@@ -1,7 +1,5 @@
-import UsersMongoManager from "../DAL/daos/mongoManagers/usersMongoManager.js";
+import usersManager from "../DAL/daos/factory.js";
 import { hashData } from "../utils.js";
-
-const usersManager = new UsersMongoManager()
 
 export async function createUser(user) {
     try {
