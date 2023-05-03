@@ -17,6 +17,8 @@ import { cartsModel } from "./DAL/models/carts.model.js";
 import passport from "passport";
 import './passport/passportStrategies.js'
 import config from './config.js'
+import { generateProducts } from "./mocks/mocks.js";
+import { errorMiddleware } from "./errors/errors.middleware.js";
 
 const PORT = config.port;
 const app = express();
@@ -57,9 +59,14 @@ app.use('/views', viewsRouter)
 app.use('/users', usersRouter)
 app.use('/messages', messagesRouter)
 // app.use('/api/users', usersRouter2)
-app.use('/', (req,res)=> {
-  res.redirect('/views/login')
-})
+// app.use('/', (req,res)=> {
+//   res.redirect('/views/login')
+// })
+app.get('/api/mockingproducts', (req,res)=> {
+  const products = generateProducts()
+  console.log(products);
+  res.json(products)
+}), 
 
 app.get("/carts/:cartId", async (req, res) => {
   const { cartId } = req.params;
@@ -72,6 +79,7 @@ app.get("/carts/:cartId", async (req, res) => {
 
 
 //Listen
+app.use(errorMiddleware)
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
 });

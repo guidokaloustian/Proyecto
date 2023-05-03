@@ -1,8 +1,9 @@
 import { ticketsModel } from "../../models/ticket.model.js";
 
 export default class TicketsMongoManager {
-  async createTicket(objTicket) {
+  async createTicket(objTicket) { 
     try {
+      console.log(objTicket);
       const newTicket = await ticketsModel.create(objTicket);
       return newTicket;
     } catch (error) {

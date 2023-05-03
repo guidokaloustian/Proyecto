@@ -1,6 +1,6 @@
-import CartsMongoManager from "../DAL/daos/mongoManagers/cartsMongoManager.js";
-import ProductsMongoManager from "../DAL/daos/mongoManagers/productsMongoManager.js";
-import TicketsMongoManager from "../DAL/daos/mongoManagers/ticketsMongoManager.js";
+import CartsMongoManager from "../DAL/DAOs/mongoManagers/cartsMongoManager.js";
+import ProductsMongoManager from "../DAL/DAOs/mongoManagers/productsMongoManager.js";
+import TicketsMongoManager from "../DAL/DAOs/mongoManagers/ticketsMongoManager.js";
 
 const cartsManager = new CartsMongoManager()
 const productsManager = new ProductsMongoManager()
@@ -77,13 +77,14 @@ export async function addProductToCart(cartId, productId) {
   export async function purchase(cartId, email) {
     try {
       const cart = await cartsManager.getCartById(cartId);
-      if (!cart) return res.json({messae: 'Cart not found'})
-      if(!product || product.stock === 0) return res.json({messae: 'Product not found or with no stock'})
-      const product = productsManager.getProductById(product._id)
+      if (!cart) throw new Error({message: 'Cart not found'})
+      const product = await productsManager.getProductById(cart.products[0])
+      console.log(product);
+      if(!product || product.stock === 0) throw new Error({message: 'Cart not found'})
       product.stock--
       product.save()
-      const ticket = ticketsManager.createTicket(10000, email)
-      res.json({message: 'Your purchase has succesfully been submited'})
+      const ticket = await ticketsManager.createTicket({amount:10000})
+      console.log(ticket);
     } catch (error) {
       console.log(error);
     }

@@ -5,9 +5,16 @@ const cartsSchema = mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Products",
-      default: [],
+    },
+    {
+      quantity: {
+        type: Number,
+        required: true,
+        default: 1,
+      },
     },
   ],
+  default: [],
 });
 
 cartsSchema.pre("find", function (next) {

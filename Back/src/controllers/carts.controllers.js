@@ -66,9 +66,8 @@ export async function endPurchase (req, res) {
   try {
     const { cartId } = req.params
     const { email } = req.body;
-    const ticket = await create(cartId, email)
+    const ticket = await purchase(cartId, email)
     res.status(200).json({ message: "Ticket created", ticket });
-    
   } catch (error) {
     res.status(500).json({message: error});
   }

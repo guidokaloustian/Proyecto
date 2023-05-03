@@ -7,6 +7,6 @@ router.get('/', findAll)
 router.get('/:cartId', findById)
 router.post('/addToCart', addToCart)
 router.delete('/delete', deleteAllFromCart)
-router.post('/:cartId/purchase', endPurchase)
+router.get('/:cartId/purchase', endPurchase)
 
 export default router
