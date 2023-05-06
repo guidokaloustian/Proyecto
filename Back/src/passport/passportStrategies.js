@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
 import { usersModel } from "../DAL/models/users.model.js";
-import { hashData, comparePasswords } from "../utils.js";
+import { hashData, comparePasswords } from "../utils/utils.js";
 
 // Local passport
 passport.use(

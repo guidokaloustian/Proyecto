@@ -1,6 +1,6 @@
 import express from "express";
 import handlebars from "express-handlebars";
-import { __dirname } from "./utils.js";
+import { __dirname } from "./utils/utils.js";
 import { ProductManager } from "./DAL/daos/fileManagers/productManager.js";
 import productsRouter from "./routes/products.router.js";
 import productsRouter2 from "./routes/products2.router.js";
@@ -17,8 +17,9 @@ import { cartsModel } from "./DAL/models/carts.model.js";
 import passport from "passport";
 import './passport/passportStrategies.js'
 import config from './config.js'
-import { generateProducts } from "./mocks/mocks.js";
-import { errorMiddleware } from "./errors/errors.middleware.js";
+import { generateProducts } from "./utils/mocks/mocks.js";
+import { errorMiddleware } from "./utils/errors/errors.middleware.js";
+import logger from "./utils/logs/winston.js";
 
 const PORT = config.port;
 const app = express();
@@ -75,6 +76,15 @@ app.get("/carts/:cartId", async (req, res) => {
   const products = cart.products;
   console.log(products);
   res.render("productsRender", { products });
+});
+
+app.get("/loggerTest", async (req, res) => {
+  logger.fatal("Logger fatal")
+  logger.error("Logger error")
+  logger.warning("Logger warn")
+  logger.info("Logger info")
+  logger.http("Logger http")
+  logger.debug("Logger debug")
 });
 
 

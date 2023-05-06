@@ -1,5 +1,5 @@
 import usersManager from "../DAL/daos/factory.js";
-import { hashData } from "../utils.js";
+import { hashData } from "../utils/utils.js";
 
 export async function createUser(user) {
     try {
