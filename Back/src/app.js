@@ -20,6 +20,8 @@ import config from './config.js'
 import { generateProducts } from "./utils/mocks/mocks.js";
 import { errorMiddleware } from "./utils/errors/errors.middleware.js";
 import logger from "./utils/logs/winston.js";
+import swaggerUi from 'swagger-ui-express'
+import { swaggerSetup } from "./SwaggerSpecs.js";
 
 const PORT = config.port;
 const app = express();
@@ -51,6 +53,7 @@ app.set("views", __dirname + "/views");
 
 //Routes
 // app.use("/api/products", productsRouter2)
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSetup))
 app.use("/products", productsRouter)
 app.use("/api/products", productsRouter2)
 app.use("/api/carts", cartsRouter2)
@@ -86,7 +89,6 @@ app.get("/loggerTest", async (req, res) => {
   logger.http("Logger http")
   logger.debug("Logger debug")
 });
-
 
 //Listen
 app.use(errorMiddleware)
