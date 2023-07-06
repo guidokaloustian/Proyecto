@@ -1,5 +1,7 @@
-import usersManager from "../DAL/daos/factory.js";
+import UsersMongoManager from '../dao/mongoManagers/usersMongoManager.js'
 import { hashData } from "../utils/utils.js";
+
+const usersManager = new UsersMongoManager()
 
 export async function createUser(user) {
     try {
@@ -24,6 +26,15 @@ export async function deleteUser(userId) {
     try {
         const userDeleted = await usersManager.deleteUser(userId)
         return userDeleted
+    } catch (error) {
+        return error;
+    }
+}
+
+export async function getAllUsers(userId) {
+    try {
+        const users = await usersManager.findAllUsers()
+        return users
     } catch (error) {
         return error;
     }

@@ -1,10 +1,10 @@
-import ProductsMongoManager from "../DAL/daos/mongoManagers/productsMongoManager.js";
+import ProductsMongoManager from "../dao/mongoManagers/productsMongoManager.js";
 
 const productManager = new ProductsMongoManager()
 
 export async function getAllProducts() {
     try {
-        const products = productManager.getAll()
+        const products = await productManager.getAll()
         return products
     } catch (error) {
         return error;

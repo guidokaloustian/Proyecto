@@ -4,7 +4,7 @@ import { create, findById, findAll } from "../controllers/products.controllers.j
 const router = Router()
 
 router.get('/', create)
-router.get('/products', findAll)
-router.get('/:cartId', findById)
+router.get('/getAll', findAll)
+router.get('/:productId', findById)
 
 export default router

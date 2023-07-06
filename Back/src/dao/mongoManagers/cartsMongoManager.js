@@ -1,4 +1,6 @@
-import { cartsModel } from "../../models/carts.model.js";
+import { cartsModel } from "../models/carts.model.js";
+import logger from '../../utils/logs/winston.js'
+
 
 export default class CartsMongoManager {
   async createCart(objCart) {
@@ -6,7 +8,7 @@ export default class CartsMongoManager {
       const newCart = await cartsModel.create(objCart);
       return newCart;
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
@@ -15,7 +17,7 @@ export default class CartsMongoManager {
       const cart = await cartsModel.find();
       return cart;
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
@@ -24,7 +26,7 @@ export default class CartsMongoManager {
       const cart = await cartsModel.findById(idCart).populate("products");
       return cart;
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
@@ -33,17 +35,18 @@ export default class CartsMongoManager {
         const updatedCart = await cartsModel.findByIdAndUpdate(cartId, newArray, {new: true})
         return updatedCart;
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
   async deleteAllProuctsFromCart(cartId) {
     try {
       const cart = await cartsModel.findById(cartId);
-      cart.products.remove({});
-      cart.save();
+      await cart.products.remove({});
+      await cart.save();
+      return cart
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 
@@ -53,7 +56,7 @@ export default class CartsMongoManager {
       cart.products.remove(productId);
       cart.save();
     } catch (error) {
-      console.log(error);
+      return error
     }
   }
 }

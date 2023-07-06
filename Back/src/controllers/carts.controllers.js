@@ -3,7 +3,6 @@ import {
   getCartById,
   createCart,
   deleteAllProuctsFromCart,
-  purchase,
   addProductToCart
 } from "../services/carts.services.js";
 
@@ -46,6 +45,8 @@ export async function create(req, res) {
 export async function addToCart(req,res) {
   try {
     const {cartId, productId} = req.body;
+    console.log(cartId);
+    console.log(productId);
     const cart = await addProductToCart(cartId, productId);
     res.status(200).json({ message: "Product added", cart });
   } catch (error) {
@@ -55,7 +56,7 @@ export async function addToCart(req,res) {
 
 export async function deleteAllFromCart(req,res) {
   try {
-    const cart = await deleteAllFromCart();
+    const cart = await deleteAllProuctsFromCart(req.params.cartId);
     res.status(200).json({ message: "Products succesfully deleted", cart });
   } catch (error) {
     res.status(500).json({ message: error });

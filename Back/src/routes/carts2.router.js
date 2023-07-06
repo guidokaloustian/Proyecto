@@ -6,7 +6,7 @@ const router = Router()
 router.get('/', findAll)
 router.get('/:cartId', findById)
 router.post('/addToCart', addToCart)
-router.delete('/delete', deleteAllFromCart)
+router.delete('/deleteProducts/:cartId', deleteAllFromCart)
 router.get('/:cartId/purchase', endPurchase)
 
 export default router

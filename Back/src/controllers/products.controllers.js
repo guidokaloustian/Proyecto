@@ -1,4 +1,5 @@
 import { getAllProducts, getProductById, createProduct } from "../services/products.services.js";
+import { productsModel } from "../dao/models/products.model.js";
 
 export async function create(req, res) {
     const { title, description, category, price, thumbnails, code, stock, status } = req.body;
@@ -16,12 +17,11 @@ export async function create(req, res) {
 
 export async function findById(req, res) {
     try {
-      const { _id } = req.body;
-      const product = await getProductById({ _id });
+      const product = await getProductById(req.params.productId);
       if (product.length === 0) {
         res.status(200).json({ message: "Product incorrect" });
       } else {
-        res.status(200).json({ message: "Product found", user });
+        res.status(200).json({ message: "Product found", product });
       }
     } catch (error) {
       res.status(500).json(error);
@@ -30,11 +30,26 @@ export async function findById(req, res) {
 
   export async function findAll (req, res) {
     try {
-      const products = await getAllProducts();
+      const {limit=10, page=1, category, order = 1} = req.query;
+      let productsDocs = await getAllProducts();
+      productsDocs = await productsModel.aggregate([
+        { $sort: { price: order } },
+      ]);
+      const products = await productsModel.paginate({category}, { limit, page });
+      console.log(productsDocs);
       if (products.length === 0) {
         res.status(200).json({ message: "No products" });
       } else {
-        res.status(200).json({ message: "Products found", user });
+        res.json({status:'success',
+        payload:productsDocs,
+        totalPages:products.totalPages,
+        prevPage:products.prevPage,
+        nextPage:products.nextPage,
+        page:products.page,
+        hasPrevPage:products.hasPrevPage,
+        hasNextPage:products.hasNextPage,
+        prevLink: products.hasPrevPage === false ? 'null' :'http://localhost:8080/api/products/?page=' + products.prevPage,
+        nextLink: products.hasNextPage === false ? 'null' :'http://localhost:8080/api/products/?page=' + products.nextPage});
       }
     } catch (error) {
       res.status(500).json(error);

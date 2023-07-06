@@ -1,0 +1,73 @@
+paths:
+  /api/carts:
+    get:
+      summary: Get all carts
+      tags:
+        - Carts
+      responses:
+        '200':
+          description: All carts
+        '500':
+          description: Server error
+        '400':
+          description: Missing data
+  /api/carts/{cartId}:
+    get:
+      summary: Get a cart by id
+      tags:
+        - Carts
+      parameters:
+      - name: cartId
+        in: path
+        description: Cart identifier
+      responses:
+        '200':
+          description: One cart
+        '500':
+          description: Server error
+        '400':
+          description: Missing data
+  /api/carts/addToCart:
+    post:
+      summary: Add a product to a cart
+      tags:
+       - Carts
+      parameters:
+      - name: cartId
+        in: path
+        description: Cart identifier
+      responses:
+        '200':
+          description: Add a product to a cart
+        '500':
+          description: Server error
+        '400':
+          description: Missing data
+  /api/carts/deleteProducts/{cartId}:
+    delete:
+      summary: Delete all products from a cart
+      tags:
+       - Carts
+      responses:
+        '200':
+          description: Delete products
+        '500':
+          description: Server error
+        '400':
+          description: Missing data
+  /api/carts/{cartId}/purchase:
+    get:
+      summary: End purchase
+      tags:
+        - Carts
+      parameters:
+      - name: cartId
+        in: path
+        description: End purchase
+      responses:
+        '200':
+          description: finish a purchase
+        '500':
+          description: Server error
+        '400':
+          description: Missing data

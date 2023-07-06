@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { productsModel } from "../DAL/models/products.model.js";
+import { productsModel } from "../dao/models/products.model.js";
 import { auth, isLogged } from '../middlewares/auth.middleware.js'
 
 const router = Router();

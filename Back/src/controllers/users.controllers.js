@@ -2,7 +2,10 @@ import {
   createUser,
   findByEmail,
   deleteUser,
+  getAllUsers
 } from "../services/users.services.js";
+import logger from '../utils/logs/winston.js'
+import UserDTO from '../dao/DTOs/users.dto.js'
 
 export async function create(req, res) {
   let predRole = 'user'
@@ -13,8 +16,7 @@ export async function create(req, res) {
   try {
     const userExists = await findByEmail({ email });
     if (userExists.length !== 0) {
-      // res.status(200).json({ error: "User already exists" });
-      res.redirect("/views/errorRegistro"); 
+      res.status(200).json({ error: "User already exists" });
     } else {
       if (email === "adminCoder2@coder.com" && password === "adminCod3r123") {
         req.session.isAdmin = true;
@@ -23,27 +25,13 @@ export async function create(req, res) {
       } else {
         req.session.isAdmin = false;
       }
-      console.log({...req.body, role: predRole});
       const newUser = await createUser({...req.body, role: predRole});
-      // res.status(200).json({ message: "User created", newUser });
-      res.redirect("/views/login");
+      res.status(200).json({ message: "User created", newUser });
     }
   } catch (error) {
     res.status(500).json(error);
   }
   }
-
-// export async function create(req, res) {
-//   const { email, password } = req.body;
-//   const userExists = await findByEmail({ email });
-//   if (userExists.length !== 0) {
-//     res.redirect("/views/errorRegistro");
-//   } else {
-//     const newUser = req.body;
-//     await createUser(newUser);
-//     res.redirect("/views/login");
-//   }
-// }
 
 export async function find(req, res) {
   try {
@@ -56,6 +44,24 @@ export async function find(req, res) {
     }
   } catch (error) {
     res.status(500).json(error);
+  }
+}
+
+export async function getUsers(req,res){
+  try {
+      const users = await getAllUsers()
+      if (users) {
+          const usersDto = UserDTO.usersToDTO(users)
+          if(usersDto){
+              logger.info('Users found')
+              res.status(200).json({message: 'Users found', usersDto})
+          }else{
+              logger.error('Users not found') 
+              res.status(500).json({message: 'Users not found'})
+          }
+      }
+  } catch (error) {
+      logger.error(error)
   }
 }
 
