@@ -67,12 +67,12 @@ export async function getUsers(req,res){
 
 export async function deleteUserById(req, res) {
   try {
-    const { _id } = req.params;
-    const user = await deleteUser( _id );
+    const {_id} = req.params;
+    const user = await deleteUser(_id);
     if (user.length === 0) {
-      res.status(200).json({ message: "User incorrect" });
+      res.status(200).json({message: "User incorrect"});
     } else {
-      res.status(200).json({ message: "User found", user });
+      res.status(200).json({message: "User found", user});
     }
   } catch (error) {
     res.status(500).json(error);
